@@ -118,7 +118,7 @@ def add_entry(username_entry, passwd_entry, email_entry, alpha_var, omega_var, d
             'EMAIL': [email], 
             'SERVER': [Server], 
             'DIGI':[digi], 
-            'STATUS': [2]
+            'STATUS': ["Blank"]
             })
             
         df = pd.concat([df, new_entry], ignore_index=True)
