@@ -83,7 +83,7 @@ def open_website():
 def open_github(event=None):
     webbrowser.open("https://github.com/nihanfirdaus62")
 
-def add_entry(username_entry, passwd_entry, email_entry, alpha_var, omega_var, nickname_entry, default_passwd_var):
+def add_entry(username_entry, passwd_entry, email_entry, alpha_var, omega_var, default_passwd_var):
     global selected_file_path
     if not selected_file_path:
         messagebox.showwarning("Error", "No Excel file selected.")
@@ -98,7 +98,6 @@ def add_entry(username_entry, passwd_entry, email_entry, alpha_var, omega_var, n
         passwd = passwd_entry.get().strip()
         email = email_entry.get().strip()
         Server = "alpha" if alpha_var.get() else "omega"
-        nickname = nickname_entry.get().strip()
         digi = "enter later"
             
         if not username or not email:
@@ -118,9 +117,8 @@ def add_entry(username_entry, passwd_entry, email_entry, alpha_var, omega_var, n
             'PASSWORD': [passwd], 
             'EMAIL': [email], 
             'SERVER': [Server], 
-            'NICKNAME': [nickname], 
             'DIGI':[digi], 
-            'STATUS': [2]
+            'STATUS': ["Blank"]
             })
             
         df = pd.concat([df, new_entry], ignore_index=True)
@@ -140,15 +138,14 @@ def add_entry(username_entry, passwd_entry, email_entry, alpha_var, omega_var, n
         wb.save(selected_file_path)
         messagebox.showinfo("Success", f"Data written to {selected_file_path}")
             
-        clear(username_entry, passwd_entry, email_entry, nickname_entry, default_passwd_var)
+        clear(username_entry, passwd_entry, email_entry, default_passwd_var)
     except PermissionError:
         messagebox.showerror("Error", "The Excel file is already open. Please close it and try again.") 
         return
 
-def clear(username_entry, passwd_entry, email_entry, nickname_entry, default_passwd_var): 
+def clear(username_entry, passwd_entry, email_entry,default_passwd_var): 
     username_entry.delete(0, tk.END) 
     email_entry.delete(0, tk.END)
-    nickname_entry.delete(0, tk.END)
     if not default_passwd_var.get(): 
         passwd_entry.delete(0, tk.END)
 
