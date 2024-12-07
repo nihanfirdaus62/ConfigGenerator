@@ -3,7 +3,7 @@ from tkinter import Menu
 from PIL import Image, ImageTk
 from gui_handler import create_file, add_entry, entry, label, check_button, passwd_toggle_entry, change_pwd, create_button, toggle_alpha_omega, open_website, select_excel_file,show_author_message
 
-global username_entry, passwd_entry, email_entry, alpha_var, omega_var
+global username_entry, passwd_entry, email_entry, alpha_var, omega_var, default_password_var
 h_label = {}
 h_entry = {}
 h_button = {}
@@ -15,7 +15,9 @@ def resource_path(relative_path):
         base_path = os.path.abspath(".")
 
     return os.path.join(base_path, relative_path)
-    
+
+def submit_add_entry():
+    add_entry(username_entry, passwd_entry, email_entry, alpha_var, omega_var, default_passwd_var)    
 
 def submit_create_file():
     create_file(username_entry, passwd_entry, email_entry, default_passwd_var, alpha_var, omega_var)
@@ -36,12 +38,6 @@ def hide_excel_entry():
             for i in range(len(h_button)):
                 h_button[i].grid_remove()
 
-def submit_add_entry():
-    add_entry(username_entry, passwd_entry, email_entry, alpha_var, omega_var, default_passwd_var)
-
-def new_file():
-    print("New File!")
-
 root = tk.Tk()
 root.title("Config Creator")
 root.geometry("500x420")
@@ -60,10 +56,10 @@ root.config(menu=menu_bar)
 option_menu = Menu(menu_bar, tearoff=0)
 about_menu = Menu(menu_bar, tearoff=0)
 
-option_menu.add_command(label="Edit default password", command=lambda: change_pwd(root))
 option_menu.add_command(label="Show Excel", command=show_excel_entry)
 option_menu.add_command(label="Hide Excel", command=hide_excel_entry)
 option_menu.add_command(label="Excel path", command=select_excel_file)
+option_menu.add_command(label="Edit default password", command=lambda: change_pwd(root))
 menu_bar.add_cascade(label="Options", menu=option_menu)
 
 about_menu.add_command(label="author", command=lambda: show_author_message(root))

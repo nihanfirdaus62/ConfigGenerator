@@ -4,7 +4,7 @@ from tkinter import messagebox, filedialog
 import pandas as pd
 from openpyxl import load_workbook
 from openpyxl.worksheet.table import Table, TableStyleInfo
-from config_handler import read_default_passwd, write_default_passwd, generate_name_file, get_next_number, read_excel_file, write_excel_file, excel_reader, write_excel
+from config_handler import read_default_passwd, write_default_passwd, generate_name_file, get_next_number, excel_reader, write_excel, excel_reader
 # Global variable to store the selected file path
 selected_file_path = None
 
@@ -90,7 +90,7 @@ def add_entry(username_entry, passwd_entry, email_entry, alpha_var, omega_var, d
         return
     
     try:    
-        df = read_excel_file(selected_file_path)
+        df = excel_reader(selected_file_path)
         if df is None:
             return
 
@@ -98,12 +98,11 @@ def add_entry(username_entry, passwd_entry, email_entry, alpha_var, omega_var, d
         passwd = passwd_entry.get().strip()
         email = email_entry.get().strip()
         Server = "alpha" if alpha_var.get() else "omega"
-        digi = "enter later"
             
         if not username or not email:
             messagebox.showwarning("Input Error", "Username and Email fields are required.")
-            return
-            
+            return 
+                
         if not passwd:
             passwd = read_default_passwd()  
                 
@@ -117,7 +116,7 @@ def add_entry(username_entry, passwd_entry, email_entry, alpha_var, omega_var, d
             'PASSWORD': [passwd], 
             'EMAIL': [email], 
             'SERVER': [Server], 
-            'DIGI':[digi], 
+            'DIGI':["DIGI"], 
             'STATUS': ["Blank"]
             })
             
@@ -167,4 +166,3 @@ def show_author_message(root):
     msg_l = tk.Label(c_msg, text="Github Link!",fg="blue", cursor="hand2")
     msg_l.grid(row=2, column=3, columnspan=1,padx=20, sticky="w")
     msg_l.bind("<Button-1>", open_github)
-    

@@ -1,5 +1,5 @@
 ('C:\\Users\\Nihan\\OneDrive\\Documents\\Nen\\config nen\\Config '
- 'generator\\Under developed\\account config\\code\\build\\main\\PYZ-00.pyz',
+ 'generator\\Under developed\\account config\\build\\main\\PYZ-00.pyz',
  [('PIL', 'C:\\Python312\\Lib\\site-packages\\PIL\\__init__.py', 'PYMODULE'),
   ('PIL.BlpImagePlugin',
    'C:\\Python312\\Lib\\site-packages\\PIL\\BlpImagePlugin.py',
@@ -332,7 +332,7 @@
    'PYMODULE'),
   ('config_handler',
    'C:\\Users\\Nihan\\OneDrive\\Documents\\Nen\\config nen\\Config '
-   'generator\\Under developed\\account config\\code\\config_handler.py',
+   'generator\\Under developed\\account config\\config_handler.py',
    'PYMODULE'),
   ('configparser', 'C:\\Python312\\Lib\\configparser.py', 'PYMODULE'),
   ('contextlib', 'C:\\Python312\\Lib\\contextlib.py', 'PYMODULE'),
@@ -441,7 +441,7 @@
   ('glob', 'C:\\Python312\\Lib\\glob.py', 'PYMODULE'),
   ('gui_handler',
    'C:\\Users\\Nihan\\OneDrive\\Documents\\Nen\\config nen\\Config '
-   'generator\\Under developed\\account config\\code\\gui_handler.py',
+   'generator\\Under developed\\account config\\gui_handler.py',
    'PYMODULE'),
   ('gzip', 'C:\\Python312\\Lib\\gzip.py', 'PYMODULE'),
   ('hashlib', 'C:\\Python312\\Lib\\hashlib.py', 'PYMODULE'),

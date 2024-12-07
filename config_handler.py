@@ -1,12 +1,14 @@
 import os
 import pandas as pd
+from openpyxl import load_workbook
 from tkinter import messagebox
 
 config_file = "DPWDS.cfg"
 
 def excel_reader(f_path):
     try:
-        df = pd.read_excel(f_path, sheet_name='Sheet1')
+        book = load_workbook(f_path, read_only=True)
+        df = pd.read_excel(f_path, sheet_name=book.sheetnames[0])
         return df
     except Exception as e:
         messagebox.showerror("Error", f"Failed to read Excel file: {e}")
@@ -14,7 +16,8 @@ def excel_reader(f_path):
 
 def write_excel(df, f_path):
     try:
-        df.to_excel(f_path, index=False, sheet_name='Sheet1')
+        book = load_workbook(f_path)
+        df.to_excel(f_path, index=False, sheet_name=book.sheetnames[0])
         messagebox.showinfo("Successfully", f"Data written to {f_path}")
     except Exception as e:
         messagebox.showerror("Error", f"Failed to write Excel file: {e}")
@@ -47,19 +50,3 @@ def get_next_number(base):
                 continue
     return max_number + 1
 
-def read_excel_file(file_path):
-    try:
-        df = pd.read_excel(file_path, sheet_name='Sheet1')
-        return df
-    except Exception as e:
-        messagebox.showerror("Error", f"Failed to read Excel file: {e}")
-        return None
-
-def write_excel_file(df, file_path):
-    try:
-        df.to_excel(file_path, index=False, sheet_name='Sheet1')
-        messagebox.showinfo("Success", f"Data written to {file_path}")
-        return 1
-    except Exception as e:
-        messagebox.showerror("Error", f"Failed to write to Excel file: {e}")
-        return 0
